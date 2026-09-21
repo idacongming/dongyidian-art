@@ -1,0 +1,15 @@
+# Cloudflare Pages 响应头配置
+# 静态资源长缓存，加速二次访问
+
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=604800
+
+/js/*
+  Cache-Control: public, max-age=604800
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

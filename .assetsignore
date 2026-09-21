@@ -1,0 +1,7 @@
+# Cloudflare 部署忽略清单（Workers / Pages 静态资源上传）
+# 作用：上传时跳过这些非站点文件
+# 关键：.git 内含 git 打包对象（>25MiB），会被误当静态资源上传而触发
+#      "Asset too large"（Cloudflare 单资源上限 25 MiB）导致部署失败。
+.git
+.gitignore
+_export

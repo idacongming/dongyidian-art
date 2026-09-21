@@ -18,10 +18,20 @@
     const desc = lb.querySelector('p');
     document.querySelectorAll('.frame').forEach(f => {
       f.addEventListener('click', () => {
-        ph.className = 'ph ' + (f.dataset.tint || 't-peach');
-        ph.textContent = f.dataset.emoji || '🎨';
+        const img = f.dataset.img;
+        if (img) {
+          // 真实图片作品
+          ph.className = 'ph';
+          ph.style.background = 'transparent';
+          ph.innerHTML = '<img src="' + img + '" alt="' + (f.dataset.title || '') + '">';
+        } else {
+          // emoji 占位作品
+          ph.style.background = '';
+          ph.className = 'ph ' + (f.dataset.tint || 't-peach');
+          ph.textContent = f.dataset.emoji || '🎨';
+        }
         title.textContent = f.dataset.title || '作品';
-        desc.textContent = f.dataset.desc || '这是一张占位图，替换成真实作品即可。';
+        desc.textContent = f.dataset.desc || '';
         lb.classList.add('open');
       });
     });
